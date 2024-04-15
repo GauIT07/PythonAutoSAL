@@ -11,7 +11,7 @@ async def run(playwright: Playwright):
     await page.goto("https://dev.saladin.vn")
 
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "PJICO"
+    insurer_detail = "Liberty"
     numberseat = "7"
 
     # Homepage Saladin
@@ -98,8 +98,7 @@ async def run(playwright: Playwright):
     await input_otp.highlight()
     await input_otp.fill("123456")
 
-    btn_ThanhtoanOTP = page.locator(
-        "#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
+    btn_ThanhtoanOTP = page.locator("#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
     await btn_ThanhtoanOTP.highlight()
     await btn_ThanhtoanOTP.click()
 
