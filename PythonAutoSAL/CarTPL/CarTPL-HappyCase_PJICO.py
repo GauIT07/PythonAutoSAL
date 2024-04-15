@@ -2,7 +2,6 @@ import asyncio
 
 from playwright.async_api import async_playwright, Playwright
 
-
 async def run(playwright: Playwright):
     # where we define all actions we control and action on browser
     browser = await playwright.chromium.launch(headless=False, slow_mo=1000)
@@ -12,8 +11,8 @@ async def run(playwright: Playwright):
     await page.goto("https://dev.saladin.vn")
 
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "PVI"
-    numberseat = "10"
+    insurer_detail = "PJICO"
+    numberseat = "7"
 
     # Homepage Saladin
     product_cat = page.get_by_title(product_detail)
@@ -111,5 +110,3 @@ async def main():
         await run(playwright)
 
 asyncio.run(main())
-C7677414896
-B6858738443
