@@ -7,7 +7,7 @@ async def run(playwright: Playwright, __next=None):
     browser = await chromium.launch(headless=False, slow_mo=500)
     page = await browser.new_page()
 
-    renewal_urlCarTPL = "https://saladin.vn/renewal/zns?policy_id=P1117031362&env=staging"
+    renewal_urlCarTPL = "https://saladin.vn/renewal/zns?policy_id=P9824849201&env=staging"
     # sokhung = "SOKHUNG"
     # bienso = "14N11234"
 

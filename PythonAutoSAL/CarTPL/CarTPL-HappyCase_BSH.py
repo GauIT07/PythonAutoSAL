@@ -12,7 +12,7 @@ async def run(playwright: Playwright):
     await page.goto("https://dev.saladin.vn")
 
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "BSH"
+    insurer_detail = "Bảo Việt"
     numberseat = "20"
 
     # Homepage Saladin

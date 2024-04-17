@@ -9,7 +9,7 @@ async def run(playwright: Playwright):
     page = await browser.new_page()
 
 
-    await page.goto("https://dev.saladin.vn")
+    await page.goto("https://staging.saladin.vn")
 
     product_detail = "Bảo hiểm ô tô"
     insurer_detail = "PVI"

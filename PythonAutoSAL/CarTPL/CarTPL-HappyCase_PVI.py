@@ -1,4 +1,5 @@
 import asyncio
+import random
 
 from playwright.async_api import async_playwright, Playwright
 
@@ -12,8 +13,9 @@ async def run(playwright: Playwright):
     await page.goto("https://dev.saladin.vn")
 
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "PVI"
+    insurer_detail = "Bảo Việt"
     numberseat = "10"
+    ngaunhien = random.randint(1,1000)
 
     # Homepage Saladin
     product_cat = page.get_by_title(product_detail)
@@ -48,10 +50,38 @@ async def run(playwright: Playwright):
 
     # Page Điền thông tin
     # Click icon meo meo
-    icon_meow = page.get_by_title("Meow meow")
-    await icon_meow.highlight()
-    await icon_meow.click()
+    textbox_owner = page.locator("#buyer_name")
+    await textbox_owner.highlight()
+    await textbox_owner.fill("Đặt đơn T")
+
+    textbox_address = page.locator("#buyer_address")
+    await textbox_address.highlight()
+    await textbox_address.fill("111 LCT Q3")
+
+    textbox_idnumber = page.locator("#buyer_identity")
+    await textbox_idnumber.highlight()
+    await textbox_idnumber.fill("111222333")
+
+    textbox_platenumber = page.locator("#plate_number")
+    await textbox_platenumber.highlight()
+    await textbox_platenumber.fill("51L12222")
+
+    textbox_chassis = page.locator("#chassis")
+    await textbox_chassis.highlight()
+    await textbox_chassis.fill("SOKHUNG")
+
+    # icon_meow = page.get_by_title("Meow meow")
+    # await icon_meow.highlight()
+    # await icon_meow.click()
     # Click btn Hoàn tất
+    textbox_email = page.locator("#buyer_email")
+    await textbox_email.highlight()
+    await textbox_email.fill("nhantest1@yopmail.com")
+
+    textbox_phonenumber = page.locator("#buyer_phone")
+    await textbox_phonenumber.highlight()
+    await textbox_phonenumber.fill("0908111222")
+
     btn_Hoantat = page.get_by_text("Hoàn tất")
     await btn_Hoantat.highlight()
     await btn_Hoantat.click()
@@ -111,5 +141,3 @@ async def main():
         await run(playwright)
 
 asyncio.run(main())
-C7677414896
-B6858738443
