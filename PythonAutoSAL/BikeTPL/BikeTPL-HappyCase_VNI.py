@@ -1,5 +1,4 @@
 import asyncio
-import random
 
 from playwright.async_api import async_playwright, Playwright
 
@@ -12,11 +11,8 @@ async def run(playwright: Playwright):
 
     await page.goto("https://dev.saladin.vn")
 
-    product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "PVI"
-    numberseat = "10"
-    ngaunhien = random.randint(1,1000)
-    text_owner = "Đặt đơn T"
+    product_detail = "Bảo hiểm xe máy"
+    insurer_detail = "VNI"
 
     # Homepage Saladin
     product_cat = page.get_by_title(product_detail)
@@ -27,17 +23,6 @@ async def run(playwright: Playwright):
     flow_mua = page.get_by_text("Mua ngay")
     await flow_mua.highlight()
     await flow_mua.click()
-
-    # Page chọn bảo hiểm
-    # Nhập số chỗ ngồi
-    textbox_amountseat = page.locator("//*[@id='amount_seat']")
-    await textbox_amountseat.highlight()
-    await textbox_amountseat.clear()
-    await textbox_amountseat.fill(numberseat)
-    # Click btn Tiếp tục
-    btn_Tieptuc = page.get_by_text("Tiếp tục")
-    await btn_Tieptuc.highlight()
-    await btn_Tieptuc.click()
 
     # Page Thời hạn bảo hiểm
     # Chọn nhà cung cấp
@@ -51,38 +36,10 @@ async def run(playwright: Playwright):
 
     # Page Điền thông tin
     # Click icon meo meo
-    textbox_owner = page.locator("#buyer_name")
-    await textbox_owner.highlight()
-    await textbox_owner.fill(text_owner)
-
-    textbox_address = page.locator("#buyer_address")
-    await textbox_address.highlight()
-    await textbox_address.fill("111 LCT Q3")
-
-    textbox_idnumber = page.locator("#buyer_identity")
-    await textbox_idnumber.highlight()
-    await textbox_idnumber.fill("111222333")
-
-    textbox_platenumber = page.locator("#plate_number")
-    await textbox_platenumber.highlight()
-    await textbox_platenumber.fill("51L12222")
-
-    textbox_chassis = page.locator("#chassis")
-    await textbox_chassis.highlight()
-    await textbox_chassis.fill("SOKHUNG")
-
-    # icon_meow = page.get_by_title("Meow meow")
-    # await icon_meow.highlight()
-    # await icon_meow.click()
+    icon_meow = page.get_by_title("Meow meow")
+    await icon_meow.highlight()
+    await icon_meow.click()
     # Click btn Hoàn tất
-    textbox_email = page.locator("#buyer_email")
-    await textbox_email.highlight()
-    await textbox_email.fill("nhantest1@yopmail.com")
-
-    textbox_phonenumber = page.locator("#buyer_phone")
-    await textbox_phonenumber.highlight()
-    await textbox_phonenumber.fill("0908111222")
-
     btn_Hoantat = page.get_by_text("Hoàn tất")
     await btn_Hoantat.highlight()
     await btn_Hoantat.click()
