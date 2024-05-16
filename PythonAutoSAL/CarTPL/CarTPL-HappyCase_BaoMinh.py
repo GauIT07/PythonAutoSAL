@@ -1,13 +1,16 @@
 import asyncio
+import os
 
-from playwright.async_api import async_playwright, Playwright
-
+from playwright.async_api import async_playwright, expect, Playwright
 
 async def run(playwright: Playwright):
-    # where we define all actions we control and action on browser
-    browser = await playwright.chromium.launch(headless=False, slow_mo=1000)
-    page = await browser.new_page()
+    user_dir = 'tmp/playwright'
+    user_dir = os.path.join(os.getcwd(), user_dir)
+    chromium = playwright.chromium # or "firefox" or "webkit".
+    browser = await chromium.launch_persistent_context(user_dir, headless=False, slow_mo=1000,
+                                                       args=['--start-maximized'], no_viewport=True)
 
+    page = await browser.new_page()
 
     await page.goto("https://staging.saladin.vn")
 
