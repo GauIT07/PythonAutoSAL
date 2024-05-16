@@ -7,7 +7,7 @@ async def run(playwright: Playwright, __next=None):
     browser = await chromium.launch(headless=False, slow_mo=500)
     page = await browser.new_page()
 
-    renewal_urlCarTPL = "https://dev.saladin.vn/renewal/zns?policy_id=P4559194770&env=staging"
+    renewal_urlCarTPL = "https://dev.saladin.vn/renewal/zns?policy_id=P9664017712&env=staging"
     insurer_detail = "PVI"
     sokhung = "SOKHUNG"
     bienso = "14N11234"
@@ -19,7 +19,7 @@ async def run(playwright: Playwright, __next=None):
     await page.goto(renewal_urlCarTPL)
 
     # click xem chi tiết
-    icon_edit = page.locator("#__next > main > div > section > div > div > div.relative.pb-nds-xl.xl\:rounded-b-nds-lg.xl\:bg-nds-t-bg-alternative.xl\:shadow-nds-md > section > div > div:nth-child(2)")
+    icon_edit = page.locator("//button[@title='Bấm để xem thêm thông tin']")
     await icon_edit.highlight()
     await icon_edit.click()
     # click thay đổi
@@ -33,7 +33,7 @@ async def run(playwright: Playwright, __next=None):
     await insurer.highlight()
     await insurer.check()
     # Enable toggle
-    toggle_TNNNTX = page.locator("#__next > main > div > div.pb-\[130px\].xl\:flex.xl\:space-x-\[34px\] > section > div:nth-child(2) > form > div.mb-\[24px\].space-y-\[8px\].bg-white.py-\[0px\].sm\:space-y-0 > section:nth-child(3) > div:nth-child(3) > div > div:nth-child(2) > label > div.rv-input-radio-text-unchecked-icon.hover\:opacity-90 > svg > rect:nth-child(3)")
+    toggle_TNNNTX = page.locator("//div[@class='rv-input-radio-text-unchecked-icon hover:opacity-90']")
     await toggle_TNNNTX.highlight()
     await toggle_TNNNTX.click()
     # Click btn Điền thông tin
@@ -59,7 +59,7 @@ async def run(playwright: Playwright, __next=None):
 
     # Page Đơn hàng
     # click btn Tiến hành thanh toán
-    btn_Tienhanhthanhtoan = page.get_by_role("button", name="Tiến hành thanh toán")
+    btn_Tienhanhthanhtoan = page.locator("//div[@button='Tiến hành thanh toán']")
     await btn_Tienhanhthanhtoan.highlight()
     await btn_Tienhanhthanhtoan.click()
 

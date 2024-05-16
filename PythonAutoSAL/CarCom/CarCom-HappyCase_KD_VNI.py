@@ -3,15 +3,66 @@ import asyncio
 from playwright.async_api import async_playwright, Playwright
 
 
-async def run(playwright: Playwright):
+async def run(playwright: Playwright, insurer_name=None):
     # where we define all actions we control and action on browser
     browser = await playwright.chromium.launch(headless=False, slow_mo=1000)
     page = await browser.new_page()
 
-    url_order = ("https://dev.saladin.vn/thanh-toan?order_id=11411&order_number=B1674795976")
-    await page.goto(url_order)
 
-      # Page thông tin thanh toán
+    await page.goto("https://dev.saladin.vn")
+
+    product_detail = "Bảo hiểm vật chất ô tô"
+    insurer_detail = "Bảo Hiểm Hàng Không"
+
+    # Homepage Saladin
+    product_cat = page.get_by_title(product_detail)
+    await product_cat.highlight()
+    await product_cat.click()
+
+    # Landing page Bảo hiểm ô tô
+    flow_mua = page.get_by_text("Mua online")
+    await flow_mua.highlight()
+    await flow_mua.click()
+
+    # Page chọn bảo hiểm
+    # Nhập số chỗ ngồi
+    icon_meow = page.get_by_text("Meow meow")
+    await icon_meow.highlight()
+    await icon_meow.click()
+    # Click btn Tiếp tục
+    btn_Tieptuc = page.get_by_text("Tiếp tục")
+    await btn_Tieptuc.highlight()
+    await btn_Tieptuc.click()
+
+    # Page Thời hạn bảo hiểm
+    # Chọn nhà cung cấp
+    if (insurer_name : "Bảo Hiểm Hàng Không")
+        insurer_name = page.get_by_text(insurer_detail)
+        btn_muangay = page.get_by_text("Mua ngay")
+        await btn_muangay.highlight()
+        await btn_muangay.click()
+    # Click btn Điền thông tin
+    btn_Dienthongtin = page.get_by_text("Điền thông tin")
+    await btn_Dienthongtin.highlight()
+    await btn_Dienthongtin.click()
+
+    # Page Điền thông tin
+    # Click icon meo meo
+    icon_meow = page.get_by_title("Meow meow")
+    await icon_meow.highlight()
+    await icon_meow.click()
+    # Click btn Hoàn tất
+    btn_Hoantat = page.get_by_text("Hoàn tất")
+    await btn_Hoantat.highlight()
+    await btn_Hoantat.click()
+
+    # Page Đơn hàng
+    # click btn Tiến hành thanh toán
+    btn_Tienhanhthanhtoan = page.get_by_role("button", name="Tiến hành thanh toán")
+    await btn_Tienhanhthanhtoan.highlight()
+    await btn_Tienhanhthanhtoan.click()
+
+    # Page thông tin thanh toán
     # Chọn thanh toán thẻ nội địa
     payment_thenoidia = page.get_by_title("Thẻ Nội Địa")
     await payment_thenoidia.highlight()

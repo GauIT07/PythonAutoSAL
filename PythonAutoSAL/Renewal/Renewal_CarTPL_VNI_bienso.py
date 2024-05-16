@@ -4,10 +4,10 @@ from playwright.async_api import async_playwright, Playwright
 
 async def run(playwright: Playwright, __next=None):
     chromium = playwright.chromium # or "firefox" or "webkit".
-    browser = await chromium.launch(headless=False, slow_mo=500)
+    browser = await chromium.launch(headless=False, slow_mo=1000)
     page = await browser.new_page()
 
-    renewal_urlCarTPL = "https://saladin.vn/renewal/zns?policy_id=P7592385410&env=staging"
+    renewal_urlCarTPL = "https://dev.saladin.vn/renewal/zns?policy_id=P9664017712&env=staging"
     insurer_detail = "VNI"
     sokhung = "SOKHUNG"
     bienso = "14N11234"
@@ -30,13 +30,13 @@ async def run(playwright: Playwright, __next=None):
 
     # Page Chọn bảo hiểm
     # Chọn Nhà cung cấp
-    insurer = page.get_by_text(insurer_detail)
-    await insurer.highlight()
-    await insurer.check()
+    # insurer = page.get_by_text(insurer_detail)
+    # await insurer.highlight()
+    # await insurer.check()
     # Click btn Điền thông tin
-    btn_Dienthongtin = page.get_by_role("button", name="Điền thông tin")
-    await btn_Dienthongtin.highlight()
-    await btn_Dienthongtin.click()
+    # btn_Dienthongtin = page.get_by_role("button", name="Điền thông tin")
+    # await btn_Dienthongtin.highlight()
+    # await btn_Dienthongtin.click()
 
 
     # Page Điền thông tin

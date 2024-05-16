@@ -15,8 +15,8 @@ async def run(playwright: Playwright):
     product_detail = "Bảo hiểm ô tô"
     insurer_detail = "PVI"
     numberseat = "10"
-    ngaunhien = random.randint(1,1000)
     text_owner = "Đặt đơn T"
+    coupon_detail_name = "CarTPL10K"
 
     # Homepage Saladin
     product_cat = page.get_by_title(product_detail)
@@ -94,6 +94,18 @@ async def run(playwright: Playwright):
     await btn_Tienhanhthanhtoan.click()
 
     # Page thông tin thanh toán
+    # Add coupon code
+    coupon = page.locator("//div[@class='ml-[8px] text-on-surface-dark-high-emphasis sm:text-body-large' and contains(text(),'Chọn hoặc nhập mã ưu đãi')]")
+    await coupon.highlight()
+    await coupon.click()
+    xpath = f"//div[@class='pr-[8px] text-body-medium font-semibold' and contains(text(),'{coupon_detail_name}')]"
+    coupon_detail = page.locator(xpath)
+    await coupon_detail.highlight()
+    await coupon_detail.click()
+    btn_Sudung = page.get_by_role("button", name="Sử dụng")
+    await btn_Sudung.highlight()
+    await btn_Sudung.click()
+
     # Chọn thanh toán thẻ nội địa
     payment_thenoidia = page.get_by_title("Thẻ Nội Địa")
     await payment_thenoidia.highlight()
@@ -105,8 +117,7 @@ async def run(playwright: Playwright):
 
     # Page Onepay Thẻ nội địa
     # Chọn ABBANK
-    bank_ABBANK = page.locator(
-        "#domescard-radio > div > domescard-main > div > div > div.bank-list > div > div:nth-child(17) > a > div > img")
+    bank_ABBANK = page.locator("#domescard-radio > div > domescard-main > div > div > div.bank-list > div > div:nth-child(17) > a > div > img")
     await bank_ABBANK.highlight()
     await bank_ABBANK.click()
     # Nhập thông tin thẻ
@@ -125,13 +136,11 @@ async def run(playwright: Playwright):
     await btn_Thanhtoan.highlight()
     await btn_Thanhtoan.click()
 
-    input_otp = page.locator(
-        "#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.nd-form-input > div > input")
+    input_otp = page.locator("#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.nd-form-input > div > input")
     await input_otp.highlight()
     await input_otp.fill("123456")
 
-    btn_ThanhtoanOTP = page.locator(
-        "#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
+    btn_ThanhtoanOTP = page.locator("#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
     await btn_ThanhtoanOTP.highlight()
     await btn_ThanhtoanOTP.click()
 
