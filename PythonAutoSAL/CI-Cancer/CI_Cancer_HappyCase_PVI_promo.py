@@ -165,10 +165,8 @@ async def run(playwright: Playwright):
     await btn_ThanhtoanOTP.highlight()
     await btn_ThanhtoanOTP.click()
 
-
     result_payment = page.locator("//div[@class='text-nds-desktop-h6 font-semibold']")
-    # assert result_payment.get_attribute("value") == "Thanh toán thành công"
-    print(result_payment)
+    assert "Thanh toán thành công" in result_payment.text_content()
 
     await browser.close()
 
