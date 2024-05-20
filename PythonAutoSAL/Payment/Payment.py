@@ -8,7 +8,7 @@ async def run(playwright: Playwright):
     browser = await playwright.chromium.launch(headless=False, slow_mo=1000)
     page = await browser.new_page()
 
-    url_order = ("https://dev.saladin.vn/thanh-toan?order_id=11411&order_number=B1674795976")
+    url_order = ("https://dev.saladin.vn/thanh-toan?order_id=12029&order_number=C9743014415")
     await page.goto(url_order)
 
       # Page thông tin thanh toán
@@ -17,7 +17,7 @@ async def run(playwright: Playwright):
     await payment_thenoidia.highlight()
     await payment_thenoidia.click()
     # Click Xác nhận
-    btn_Xacnhan = page.get_by_role("button", name="Xác nhận")
+    btn_Xacnhan = page.get_by_role("button", name="Thanh toán")
     await btn_Xacnhan.highlight()
     await btn_Xacnhan.click()
 
