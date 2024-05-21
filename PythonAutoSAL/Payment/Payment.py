@@ -8,7 +8,7 @@ async def run(playwright: Playwright):
     browser = await playwright.chromium.launch(headless=False, slow_mo=1000)
     page = await browser.new_page()
 
-    url_order = ("https://dev.saladin.vn/thanh-toan?order_id=12029&order_number=C9743014415")
+    url_order = ("https://dev.saladin.vn/payment?order_id=15L109UB4OR")
     await page.goto(url_order)
 
       # Page thông tin thanh toán

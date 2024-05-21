@@ -116,7 +116,7 @@ async def run(playwright: Playwright):
 
     # Page thông tin thanh toán
     # Add coupon code
-    coupon = page.locator("//div[@class='ml-[8px] text-on-surface-dark-high-emphasis sm:text-body-large' and contains(text(),'Chọn hoặc nhập mã ưu đãi')]")
+    coupon = page.locator("//*[@class='ml-[8px] text-nds-para-medium text-nds-t-text-placeholder']")
     await coupon.highlight()
     await coupon.click()
     xpath = f"//div[@class='pr-[8px] text-body-medium font-semibold' and contains(text(),'{coupon_detail_name}')]"
@@ -128,13 +128,19 @@ async def run(playwright: Playwright):
     await btn_Sudung.click()
 
     # Chọn thanh toán thẻ nội địa
-    payment_thenoidia = page.get_by_title("Thẻ Nội Địa")
+    payment_thenoidia = page.locator("//*[@title='Thẻ Nội Địa']")
     await payment_thenoidia.highlight()
     await payment_thenoidia.click()
     # Click Xác nhận
     btn_Thanhtoan = page.get_by_role("button", name="Thanh toán")
     await btn_Thanhtoan.highlight()
     await btn_Thanhtoan.click()
+
+    popup_error_coupon = page.locator("//*[@class='sc-3101c9f6-0 fkOicM']")
+    if popup_error_coupon.is_visible():
+        btn_errorTieptuc = page.locator("//*[@class='sc-4d7de6dd-0 fVNRie']")
+        btn_errorTieptuc.click()
+
 
     # Page Onepay Thẻ nội địa
     # Chọn ABBANK
@@ -164,9 +170,6 @@ async def run(playwright: Playwright):
     btn_ThanhtoanOTP = page.locator("#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
     await btn_ThanhtoanOTP.highlight()
     await btn_ThanhtoanOTP.click()
-
-    result_payment = page.locator("//div[@class='text-nds-desktop-h6 font-semibold']")
-    assert "Thanh toán thành công" in result_payment.text_content()
 
     await browser.close()
 

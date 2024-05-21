@@ -5,7 +5,7 @@ import logging
 logger = logging.getLogger('___Test___')
 logger.setLevel(logging.INFO)
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture
 def set_up_page(page: Page):
     logger.info(msg="Open dev.saladin.vn")
     page.goto("https://dev.saladin.vn")
@@ -13,24 +13,34 @@ def set_up_page(page: Page):
     yield page
     logger.info(msg="Close Browser")
     page.close()
-@pytest.fixture(scope="function", autouse=True)
+
+@pytest.fixture
 def set_up_page_admin(page: Page):
     logger.info(msg="Open dev-admin.saladin.vn")
-    page.goto("https://dev-admin.saladin.vn")
+    page.goto("https://dev-admin.saladin.vn/login")
     logger.info(msg="Input account")
-    textbox_email = page.locator("//input[@id='mantine-sk5te7jph']")
+    textbox_email = page.locator("//input[@name='email']")
     textbox_email.fill('saladin_writer@tenxtenx.com')
-    textbox_password = page.locator("//input[@id='mantine-uu058tr6j']")
+    textbox_password = page.locator("//input[@name='password']")
     textbox_password.fill("123456")
-
-def quanly_BH_thong_thuong(set_up_page_admin: Page):
+    btn_Dangnhap = page.get_by_role("button", name="Đăng nhập")
+    btn_Dangnhap.click()
+    
+def old_order_management(set_up_page_admin: Page) -> object:
+    # menu BH thông thường
     set_up_page_admin.locator("//span[@class='mantine-Text-root mantine-NavLink-label mantine-1w1oj6o' and contains(text(), 'BH thông thường')]").click()
-    old_order_management = set_up_page_admin.locator("//span[@class='mantine-Text-root mantine-NavLink-label mantine-1w1oj6o' and contains(text(), 'Đơn hàng')]")
+    # menu đơn hàng
+    old_order = set_up_page_admin.locator("//span[@class='mantine-Text-root mantine-NavLink-label mantine-1w1oj6o' and contains(text(), 'Đơn hàng')]")
+    old_order.click()
+    # filter sản phẩm
+    set_up_page_admin.locator("//*[@id='mantine-vbvq00933']").click()
+    filter_bikeTPL = set_up_page_admin.locator("//*[@id='mantine-vbvq00933-5']")
+    filter_bikeTPL.click()
 
 #@pytest.fixture(scope="function", autouse=True)
 #def payment_provider(set_up_page: Page):
 
-def test_Bike_TPL_PVI(set_up_page: Page):
+def test_Bike_TPL_PVI(set_up_page: set_up_page_admin):
     product_detail = "Bảo hiểm xe máy"
     insurer_detail = "PVI"
 
@@ -105,11 +115,11 @@ def test_Bike_TPL_PVI(set_up_page: Page):
 
     #return set_up_page.url
     logger.info(msg="Payment success")
-    result_payment = set_up_page.locator("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
+    result_payment = set_up_page.wait_for_selector("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
     expect_result: str = "Thanh toán thành công"
     assert expect_result in result_payment.text_content()
 
-    quanly_BH_thong_thuong()
+    #old_order_management()
 
 def test_Bike_TPL_VNI(set_up_page: Page):
     product_detail = "Bảo hiểm xe máy"
@@ -184,7 +194,7 @@ def test_Bike_TPL_VNI(set_up_page: Page):
     btn_ThanhtoanOTP.click()
 
     logger.info(msg="Payment success")
-    result_payment = set_up_page.locator("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
+    result_payment = set_up_page.wait_for_selector("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
     expect_result: str = 'Thanh toán thành công'
     assert expect_result in result_payment.text_content()
 
@@ -261,6 +271,6 @@ def test_Bike_TPL_BaoMinh(set_up_page: Page):
     btn_ThanhtoanOTP.click()
 
     logger.info(msg="Payment success")
-    result_payment = set_up_page.locator("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
+    result_payment = set_up_page.wait_for_selector("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
     expect_result: str = 'Thanh toán thành công'
     assert expect_result in result_payment.text_content()
