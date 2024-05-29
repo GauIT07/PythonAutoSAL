@@ -1,7 +1,13 @@
-2024-05-21 17:54:01 - ___Test___ INFO Open dev.saladin.vn
-2024-05-21 17:54:08 - ___Test___ INFO Choose product cats
-2024-05-21 17:54:08 - ___Test___ INFO Open landing page
-2024-05-21 17:54:09 - ___Test___ INFO Choose insurer PVI
-2024-05-21 17:54:12 - ___Test___ INFO Input random buyer information
-2024-05-21 17:54:13 - ___Test___ INFO Review order
-2024-05-21 17:54:13 - ___Test___ INFO Review payment
+2024-05-28 17:11:16 - ___Test___ INFO Open dev.saladin.vn
+2024-05-28 17:11:26 - ___Test___ INFO Choose product cats
+2024-05-28 17:11:29 - ___Test___ INFO open landing page
+2024-05-28 17:11:32 - ___Test___ INFO Input detail car information
+2024-05-28 17:11:34 - ___Test___ INFO Choose insurer package
+2024-05-28 17:11:39 - ___Test___ INFO input buyer information
+2024-05-28 17:11:43 - ___Test___ INFO Input detail car information
+2024-05-28 17:11:49 - ___Test___ INFO review order
+2024-05-28 17:11:49 - ___Test___ INFO review payment and apply promotion
+2024-05-28 17:11:52 - ___Test___ INFO review payment
+2024-05-28 17:11:53 - ___Test___ INFO Payment provider
+2024-05-28 17:12:03 - ___Test___ INFO Payment success
+2024-05-28 17:12:03 - ___Test___ INFO Close Browser
