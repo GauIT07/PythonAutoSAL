@@ -12,19 +12,25 @@ def set_up_page(page: Page):
     # return page
     yield page
 
+    page.goto("https://dev-admin.saladin.vn/login")
+    page.locator("//input[@name='email']").fill("saladin_writer@tenxtenx.com")
+    page.locator("//input[@name='password']").fill("123456")
+    page.locator("//button[@type='submit']").click()
+
+    yield page
+
     logger.info(msg="Close Browser")
     page.close()
-
-#@pytest.fixture(scope="function", autouse=True)
-#def payment_provider(set_up_page: Page):
-
 
 def test_CarTPL_PVI_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
     insurer_detail = "PVI"
-    numberseat = "10"
-    text_owner = "Đặt đơn T"
-    coupon_detail_name = "CarTPL10K"
+    numberseat = "5"
+    fullname = "Dat don CarTPL"
+    coupon_detail_name = "Nghia Campaign Car"
+    namSanXuat = "2023"
+    mucDichSuDung = "Chở người"
+    loaiVanChuyenDacBiet = "Không"
 
     # Homepage Saladin
     logger.info(msg="Choose product cats")
@@ -39,7 +45,29 @@ def test_CarTPL_PVI_promo(set_up_page: Page):
     # Page chọn bảo hiểm
     # Nhập số chỗ ngồi
     logger.info(msg="Input infomation")
-    textbox_amountseat = set_up_page.locator("//*[@id='amount_seat']")
+    # Chon KDVT
+    selectbox_KDVT = set_up_page.locator("//div[@class='font-medium text-inherit' and contains(text(),'Có')]")
+    selectbox_KDVT.check()
+    # Chon Nam san xuat
+    textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
+    textbox_namSanXuat.click()
+    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
+    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value.click()
+    # Chon Muc dich su dung
+    textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
+    textbox_mucDichSuDung.click()
+    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
+    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value.click()
+    # Chon Loai van chuyen dac biet
+    textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
+    textbox_loaiVanChuyenDacBiet.click()
+    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value.click()
+    # Nhap so cho ngoi
+    textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
     # Click btn Tiếp tục
@@ -52,39 +80,39 @@ def test_CarTPL_PVI_promo(set_up_page: Page):
     insurer = set_up_page.get_by_text(insurer_detail)
     insurer.click()
     # Click btn Điền thông tin
-    btn_Dienthongtin = set_up_page.get_by_text("Điền thông tin")
-    btn_Dienthongtin.click()
+    btn_Tieptuc2 = set_up_page.get_by_text("Tiếp tục")
+    btn_Tieptuc2.click()
 
     # Page Điền thông tin
     # Click icon meo meo
     logger.info(msg="input car and buyer information")
-    textbox_owner = set_up_page.locator("#buyer_name")
-    textbox_owner.fill(text_owner)
+    textbox_owner = set_up_page.locator("//input[@name='buyer_name']")
+    textbox_owner.fill("Don CarTPL")
 
-    textbox_address = set_up_page.locator("#buyer_address")
+    textbox_address = set_up_page.locator("//input[@name='buyer_address']")
     textbox_address.fill("111 LCT Q3")
 
-    textbox_idnumber = set_up_page.locator("#buyer_identity")
+    textbox_idnumber = set_up_page.locator("//input[@name='buyer_nid']")
     textbox_idnumber.fill("111222333")
 
-    textbox_platenumber = set_up_page.locator("#plate_number")
+    textbox_platenumber = set_up_page.locator("//input[@name='plate']")
     textbox_platenumber.fill("51L12222")
 
-    textbox_chassis = set_up_page.locator("#chassis")
+    textbox_chassis = set_up_page.locator("//input[@name='chassis']")
     textbox_chassis.fill("SOKHUNG")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
     # await icon_meow.click()
     # Click btn Hoàn tất
-    textbox_email = set_up_page.locator("#buyer_email")
-    textbox_email.fill("nhantest1@yopmail.com")
+    textbox_email = set_up_page.locator("//input[@name='cert_email']")
+    textbox_email.fill("saltest@yopmail.com")
 
-    textbox_phonenumber = set_up_page.locator("#buyer_phone")
-    textbox_phonenumber.fill("0908111222")
+    textbox_phonenumber = set_up_page.locator("//input[@name='cert_phone']")
+    textbox_phonenumber.fill("0901123123")
 
-    btn_Hoantat = set_up_page.get_by_text("Hoàn tất")
-    btn_Hoantat.click()
+    btn_Tieptuc3 = set_up_page.get_by_text("Tiếp tục")
+    btn_Tieptuc3.first.click()
 
     # Page Đơn hàng
     # click btn Tiến hành thanh toán
@@ -95,9 +123,12 @@ def test_CarTPL_PVI_promo(set_up_page: Page):
     # Page thông tin thanh toán
     # Add coupon code
     logger.info(msg="review payment and apply promotion")
-    coupon = set_up_page.locator(
-        "//div[@class='ml-[8px] text-on-surface-dark-high-emphasis sm:text-body-large' and contains(text(),'Chọn hoặc nhập mã ưu đãi')]")
-    coupon.click()
+    # Ma don hang
+    order_id_value = set_up_page.locator("//div[@class='text-right text-nds-para-small sm:text-nds-para-medium ']")
+    order_id = order_id_value.first.text_content()
+    # Nhap ma uu dai
+    coupon_code = set_up_page.locator("//div[@class='ml-[8px] text-nds-para-medium text-nds-t-text-placeholder']")
+    coupon_code.click()
     xpath = f"//div[@class='pr-[8px] text-body-medium font-semibold' and contains(text(),'{coupon_detail_name}')]"
     coupon_detail = set_up_page.locator(xpath)
     coupon_detail.click()
@@ -108,7 +139,7 @@ def test_CarTPL_PVI_promo(set_up_page: Page):
     payment_thenoidia = set_up_page.get_by_title("Thẻ Nội Địa")
     payment_thenoidia.click()
     # Click Xác nhận
-    btn_Xacnhan = set_up_page.get_by_role("button", name="Xác nhận")
+    btn_Xacnhan = set_up_page.get_by_role("button", name="Thanh toán")
     btn_Xacnhan.click()
 
     # Page Onepay Thẻ nội địa
@@ -138,3 +169,8 @@ def test_CarTPL_PVI_promo(set_up_page: Page):
     btn_ThanhtoanOTP.click()
 
     logger.info(msg="Payment success")
+
+    logger.info(msg="Order id: " + order_id)
+
+    return order_id
+
