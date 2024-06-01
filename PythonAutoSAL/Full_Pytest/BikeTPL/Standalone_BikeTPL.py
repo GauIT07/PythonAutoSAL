@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, sync_playwright, Locator, expect
+from playwright.sync_api import Page,sync_playwright, expect
 import pytest
 import logging
 
@@ -26,7 +26,7 @@ def set_up_page_admin(page: Page):
     btn_Dangnhap = page.get_by_role("button", name="Đăng nhập")
     btn_Dangnhap.click()
     
-def old_order_management(set_up_page_admin: Page) -> object:
+def old_order_management(set_up_page_admin: Page):
     # menu BH thông thường
     set_up_page_admin.locator("//span[@class='mantine-Text-root mantine-NavLink-label mantine-1w1oj6o' and contains(text(), 'BH thông thường')]").click()
     # menu đơn hàng
@@ -112,18 +112,17 @@ def test_Bike_TPL_PVI(set_up_page: set_up_page_admin):
         "#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
     btn_ThanhtoanOTP.click()
 
-
-    #return set_up_page.url
+    # return set_up_page.url
     logger.info(msg="Payment success")
-    result_payment = set_up_page.wait_for_selector("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
+    result_payment = set_up_page.wait_for_selector(
+        "//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
     expect_result: str = "Thanh toán thành công"
     assert expect_result in result_payment.text_content()
-
-    #old_order_management()
 
 def test_Bike_TPL_VNI(set_up_page: Page):
     product_detail = "Bảo hiểm xe máy"
     insurer_detail = "VNI"
+    coupon_detail_name = "CarTPL10K"
 
     # Homepage Saladin
     logger.info(msg="Choose product cats")
@@ -160,6 +159,17 @@ def test_Bike_TPL_VNI(set_up_page: Page):
     btn_Tienhanhthanhtoan.click()
 
     # Page thông tin thanh toán
+    # Add coupon code
+    logger.info(msg="review payment and apply promotion")
+    coupon_code = set_up_page.locator("//div[@class='flex items-center']").nth(1)
+    coupon_code.click()
+    xpath = f"//div[@class='pr-[8px] text-body-medium font-semibold' and contains(text(),'{coupon_detail_name}')]"
+    coupon_detail = set_up_page.locator(xpath)
+    coupon_detail.click()
+    btn_Sudung = set_up_page.get_by_role("button", name="Sử dụng")
+    btn_Sudung.click()
+
+    # Page thông tin thanh toán
     # Chọn thanh toán thẻ nội địa
     logger.info(msg="Review payment")
     payment_thenoidia = set_up_page.get_by_title("Thẻ Nội Địa")
@@ -193,10 +203,13 @@ def test_Bike_TPL_VNI(set_up_page: Page):
         "#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
     btn_ThanhtoanOTP.click()
 
+    # return set_up_page.url
     logger.info(msg="Payment success")
-    result_payment = set_up_page.wait_for_selector("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
-    expect_result: str = 'Thanh toán thành công'
+    result_payment = set_up_page.wait_for_selector(
+        "//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
+    expect_result: str = "Thanh toán thành công"
     assert expect_result in result_payment.text_content()
+
 
 def test_Bike_TPL_BaoMinh(set_up_page: Page):
     product_detail = "Bảo hiểm xe máy"
@@ -270,7 +283,10 @@ def test_Bike_TPL_BaoMinh(set_up_page: Page):
         "#domescard-radio > div > domescard-main > div > div > div > app-otp-auth > form > div.nd-bank-card > div.action > div > button")
     btn_ThanhtoanOTP.click()
 
+    # return set_up_page.url
     logger.info(msg="Payment success")
-    result_payment = set_up_page.wait_for_selector("//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
-    expect_result: str = 'Thanh toán thành công'
+    result_payment = set_up_page.wait_for_selector(
+        "//div[@class='text-nds-para-small font-semibold sm:text-nds-desktop-h6']")
+    expect_result: str = "Thanh toán thành công"
     assert expect_result in result_payment.text_content()
+    expect(result_payment).to_contain_text(expect_result)

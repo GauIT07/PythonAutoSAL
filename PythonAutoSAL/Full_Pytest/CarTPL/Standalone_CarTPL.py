@@ -18,7 +18,6 @@ def set_up_page(page: Page):
 #@pytest.fixture(scope="function", autouse=True)
 #def payment_provider(set_up_page: Page):
 
-
 def test_CarTPL_PVI_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
     insurer_detail = "PVI"
@@ -95,9 +94,8 @@ def test_CarTPL_PVI_promo(set_up_page: Page):
     # Page thông tin thanh toán
     # Add coupon code
     logger.info(msg="review payment and apply promotion")
-    coupon = set_up_page.locator(
-        "//div[@class='ml-[8px] text-on-surface-dark-high-emphasis sm:text-body-large' and contains(text(),'Chọn hoặc nhập mã ưu đãi')]")
-    coupon.click()
+    coupon_code = set_up_page.locator("//div[@class='flex items-center']").nth(1)
+    coupon_code.click()
     xpath = f"//div[@class='pr-[8px] text-body-medium font-semibold' and contains(text(),'{coupon_detail_name}')]"
     coupon_detail = set_up_page.locator(xpath)
     coupon_detail.click()
@@ -108,7 +106,7 @@ def test_CarTPL_PVI_promo(set_up_page: Page):
     payment_thenoidia = set_up_page.get_by_title("Thẻ Nội Địa")
     payment_thenoidia.click()
     # Click Xác nhận
-    btn_Xacnhan = set_up_page.get_by_role("button", name="Xác nhận")
+    btn_Xacnhan = set_up_page.get_by_role("button", name="Thanh toán")
     btn_Xacnhan.click()
 
     # Page Onepay Thẻ nội địa
