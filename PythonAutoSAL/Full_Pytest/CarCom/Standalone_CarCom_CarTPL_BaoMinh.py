@@ -21,7 +21,7 @@ def set_up_page(page: Page):
 def test_CarCom_CarTPL_BaoMinh(set_up_page: Page):
     product_detail = "Bảo hiểm vật chất ô tô"
     insurer_detail = "Bảo Hiểm Hàng Không"
-    phone_number = "0901123079"
+    phone_number = "0901123090"
     user_password = "112233"
 
     # Sign in
@@ -61,7 +61,7 @@ def test_CarCom_CarTPL_BaoMinh(set_up_page: Page):
     # Chọn nhà cung cấp
     logger.info(msg="Choose insurer package")
     btn_muangay = set_up_page.get_by_role("button", name="Mua ngay")
-    btn_muangay.nth(3).click()
+    btn_muangay.nth(5).click()
 
     # Page thông tin bảo hiểm
     logger.info(msg="input buyer information")

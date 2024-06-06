@@ -45,19 +45,34 @@ def test_CarCom_VNI(set_up_page: Page):
     logger.info(msg="Choose insurer package")
 
     btn_muangay = set_up_page.get_by_role("button", name="Mua ngay")
-    btn_muangay.nth[0].click()
+    btn_muangay.nth(0).click()
+
+    btn_Desau = set_up_page.get_by_role("button", name="Để sau")
+    btn_Desau.click()
     # Click btn Điền thông tin
-    btn_Dienthongtin = set_up_page.get_by_text("Điền thông tin")
+    icon_meow2 = set_up_page.wait_for_selector("//button[@title='Meow meow']")
+    icon_meow2.click()
+    btn_Dienthongtin = set_up_page.get_by_text("Tiếp tục")
     btn_Dienthongtin.click()
 
     # Page Điền thông tin
     # Click icon meo meo
     logger.info(msg="Input detail car information")
-    icon_meow2 = set_up_page.get_by_role("button", name="Meow meow")
-    icon_meow2.click()
+    icon_meow33 = set_up_page.get_by_role("button", name="Meow meow")
+    icon_meow33.wait_for()
+    icon_meow33.click()
     # Click btn Hoàn tất
-    btn_Hoantat = set_up_page.get_by_text("Hoàn tất")
+    btn_Hoantat = set_up_page.get_by_text("Tiếp tục")
+    btn_Hoantat.wait_for()
     btn_Hoantat.click()
+
+    logger.info(msg="Upload Image")
+    icon_meow44 = set_up_page.get_by_role("button", name="Meow meow")
+    icon_meow44.click()
+    # Click btn Hoàn tất
+    btn_Hoantat = set_up_page.get_by_text("Tiếp tục")
+    btn_Hoantat.wait_for()
+    btn_Hoantat.nth(0).click()
 
     # Page Đơn hàng
     # click btn Tiến hành thanh toán
@@ -68,10 +83,15 @@ def test_CarCom_VNI(set_up_page: Page):
     # Page thông tin thanh toán
     # Chọn thanh toán thẻ nội địa
     logger.info(msg="review payment")
+    order_id = set_up_page.locator("//div[@class='text-right text-nds-para-small sm:text-nds-para-medium ']").nth(0).text_content()
+    logger.info(msg="Mã đơn hàng " + order_id)
+    order_status = set_up_page.locator("//div[@class='text-right text-nds-para-small sm:text-nds-para-medium ']").nth(1).text_content()
+
+    logger.info(msg="Trạng thái đơn hàng " + order_status)
     payment_thenoidia = set_up_page.get_by_title("Thẻ Nội Địa")
     payment_thenoidia.click()
     # Click Xác nhận
-    btn_Xacnhan = set_up_page.get_by_role("button", name="Xác nhận")
+    btn_Xacnhan = set_up_page.get_by_role("button", name="Thanh toán")
     btn_Xacnhan.click()
 
     # Page Onepay Thẻ nội địa
@@ -101,4 +121,7 @@ def test_CarCom_VNI(set_up_page: Page):
     btn_ThanhtoanOTP.click()
 
     logger.info(msg="Payment success")
-
+    return {
+        order_id,
+        order_status
+    }

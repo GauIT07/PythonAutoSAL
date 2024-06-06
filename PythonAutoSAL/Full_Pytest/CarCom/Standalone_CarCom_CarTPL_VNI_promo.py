@@ -21,7 +21,7 @@ def set_up_page(page: Page):
 def test_CarCom_VNI(set_up_page: Page):
     product_detail = "Bảo hiểm vật chất ô tô"
     insurer_detail = "Bảo Hiểm Hàng Không"
-    phone_number = "0901123079"
+    phone_number = "0901123090"
     user_password = "112233"
     coupon_detail_name = "CarCom promo"
 
@@ -47,8 +47,8 @@ def test_CarCom_VNI(set_up_page: Page):
     flow_mua = set_up_page.get_by_text("Mua online")
     flow_mua.click()
 
-    order_draft = set_up_page.get_by_role("button", name="Không, tạo đơn mới")
-    order_draft.click()
+    # order_draft = set_up_page.get_by_role("button", name="Không, tạo đơn mới")
+    # order_draft.click()
 
 
      # Click btn Tiếp tục
