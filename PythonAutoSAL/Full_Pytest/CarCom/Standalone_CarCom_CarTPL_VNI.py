@@ -21,7 +21,7 @@ def set_up_page(page: Page):
 def test_CarCom_VNI(set_up_page: Page):
     product_detail = "Bảo hiểm vật chất ô tô"
     insurer_detail = "Bảo Hiểm Hàng Không"
-    phone_number = "0901123090"
+    phone_number = "0901123095"
     user_password = "112233"
 
     # Sign in
@@ -65,6 +65,9 @@ def test_CarCom_VNI(set_up_page: Page):
 
     # Page thông tin bảo hiểm
     logger.info(msg="input buyer information")
+    textbox_email = set_up_page.locator("//input[@name='buyer_email']")
+    textbox_email.fill("nhantest247@gmail.com")
+
     textbox_idnumber = set_up_page.locator("//*[@name='buyer_identity']")
     textbox_idnumber.fill("111222333")
 

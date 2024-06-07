@@ -65,6 +65,9 @@ def test_CarCom_CarTPL_BaoViet(set_up_page: Page):
 
     # Page thông tin bảo hiểm
     logger.info(msg="input buyer information")
+    textbox_email = set_up_page.locator("//input[@name='buyer_email']")
+    textbox_email.fill("nhantest247@gmail.com")
+
     textbox_idnumber = set_up_page.locator("//*[@name='buyer_identity']")
     textbox_idnumber.fill("111222333")
 

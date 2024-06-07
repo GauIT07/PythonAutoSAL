@@ -67,7 +67,7 @@ async def run(playwright: Playwright):
     await payment_thenoidia.highlight()
     await payment_thenoidia.click()
     # Click Xác nhận
-    btn_Xacnhan = page.get_by_role("button", name="Xác nhận")
+    btn_Xacnhan = page.get_by_role("button", name="Thanh toán")
     await btn_Xacnhan.highlight()
     await btn_Xacnhan.click()
 
