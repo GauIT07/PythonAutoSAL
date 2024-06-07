@@ -52,7 +52,7 @@ def test_CarCom_CarTPL_PVI(set_up_page: Page):
 
      # Click btn Tiếp tục
     logger.info(msg="Input detail car information")
-    icon_meow = set_up_page.get_by_role("button", name="Meow meow")
+    icon_meow = set_up_page.locator("//button[@title='Meow meow']")
     icon_meow.click()
     btn_Tieptuc1 = set_up_page.get_by_role("button", name="Tiếp tục")
     btn_Tieptuc1.click()
@@ -65,6 +65,9 @@ def test_CarCom_CarTPL_PVI(set_up_page: Page):
 
     # Page thông tin bảo hiểm
     logger.info(msg="input buyer information")
+    textbox_email = set_up_page.locator("//input[@name='buyer_email']")
+    textbox_email.fill("nhantest247@gmail.com")
+
     textbox_idnumber = set_up_page.locator("//*[@name='buyer_identity']")
     textbox_idnumber.fill("111222333")
 

@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, sync_playwright, Locator
+from playwright.sync_api import Page, sync_playwright, Locator, expect
 import pytest
 import logging
 
@@ -20,7 +20,6 @@ def set_up_page(page: Page):
 
 def test_CarCom_CarTPL_BaoMinh(set_up_page: Page):
     product_detail = "Bảo hiểm vật chất ô tô"
-    insurer_detail = "Bảo Hiểm Hàng Không"
     phone_number = "0901123090"
     user_password = "112233"
 
@@ -61,10 +60,13 @@ def test_CarCom_CarTPL_BaoMinh(set_up_page: Page):
     # Chọn nhà cung cấp
     logger.info(msg="Choose insurer package")
     btn_muangay = set_up_page.get_by_role("button", name="Mua ngay")
-    btn_muangay.nth(5).click()
+    btn_muangay.nth(4).click()
 
     # Page thông tin bảo hiểm
     logger.info(msg="input buyer information")
+    textbox_email = set_up_page.locator("//input[@name='buyer_email']")
+    textbox_email.fill("nhantest247@gmail.com")
+
     textbox_idnumber = set_up_page.locator("//*[@name='buyer_identity']")
     textbox_idnumber.fill("111222333")
 
@@ -116,3 +118,7 @@ def test_CarCom_CarTPL_BaoMinh(set_up_page: Page):
     logger.info(msg="review order")
     btn_Tienhanhthanhtoan = set_up_page.get_by_role("button", name="Tiến hành thanh toán")
     btn_Tienhanhthanhtoan.click()
+
+    order_status = set_up_page.locator("//div[@class='flex items-center']")
+    expect(order_status).to_contain_text("Chờ phê duyệt")
+

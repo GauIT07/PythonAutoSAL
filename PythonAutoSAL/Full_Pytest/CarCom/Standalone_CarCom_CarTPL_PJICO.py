@@ -21,6 +21,10 @@ def set_up_page(page: Page):
 def test_CarCom_CarTPL_PJICO(set_up_page: Page):
     product_detail = "Bảo hiểm vật chất ô tô"
     insurer_detail = "Bảo Hiểm Hàng Không"
+    hangxe = 'HYUNDAI'
+    dongxe = 'Avante 1.6 MT'
+    mucdichsudung = 'Chở người'
+    namsanxuat = '2023'
     phone_number = ("0901123090")
     user_password = "112233"
 
@@ -52,8 +56,44 @@ def test_CarCom_CarTPL_PJICO(set_up_page: Page):
 
      # Click btn Tiếp tục
     logger.info(msg="Input detail car information")
-    icon_meow = set_up_page.get_by_role("button", name="Meow meow")
-    icon_meow.click()
+    # icon_meow = set_up_page.get_by_role("button", name="Meow meow")
+    # icon_meow.click()
+
+
+
+    field_HangXe = set_up_page.locator("//input[@id=':r5:']")
+    field_HangXe.click()
+    xpath1 = "//div[@class='text-nds-para-medium' and contains(text(), '%s')]" % hangxe
+    value_HangXe = set_up_page.locator(xpath1)
+    value_HangXe.click()
+
+    field_DongXe = set_up_page.locator("//input[@id=':ra:']")
+    field_DongXe.click()
+    xpath2 = "//div[@class='text-nds-para-medium' and contains(text(), '%s')]" % dongxe
+    value_DongXe = set_up_page.locator(xpath2)
+    value_DongXe.click()
+
+    field_MucDichSuDung = set_up_page.locator("//input[@id=':rg:']")
+    field_MucDichSuDung.click()
+    xpath3 = "//div[@class='text-nds-para-medium' and contains(text(), '%s')]" % mucdichsudung
+    value_MucDichSuDung = set_up_page.locator(xpath3)
+    value_MucDichSuDung.click()
+
+    field_NamSanXuat = set_up_page.locator("//input[@id=':rl:']")
+    field_NamSanXuat.click()
+    xpath4 = "//div[@class='text-nds-para-medium' and contains(text(), '%s')]" % namsanxuat
+    value_NamSanXuat = set_up_page.locator(xpath4)
+    value_NamSanXuat.click()
+
+    # field_TrongTai = set_up_page.locator("//input[@id=':rn:']")
+    # field_TrongTai.fill("5")
+
+    field_TinhThanh = set_up_page.locator("//input[@id=':rr:']")
+    field_TinhThanh.click()
+    value_TinhThanh = set_up_page.locator("//div[@class='text-nds-para-medium' and contains(text(), 'Thành phố Hồ Chí Minh')]")
+    value_TinhThanh.click()
+
+
     btn_Tieptuc1 = set_up_page.get_by_role("button", name="Tiếp tục")
     btn_Tieptuc1.click()
 
@@ -65,6 +105,9 @@ def test_CarCom_CarTPL_PJICO(set_up_page: Page):
 
     # Page thông tin bảo hiểm
     logger.info(msg="input buyer information")
+    textbox_email = set_up_page.locator("//input[@name='buyer_email']")
+    textbox_email.fill("nhantest247@gmail.com")
+
     textbox_idnumber = set_up_page.locator("//*[@name='buyer_identity']")
     textbox_idnumber.fill("111222333")
 
