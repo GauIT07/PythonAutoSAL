@@ -94,24 +94,13 @@ async def run(playwright: Playwright):
     await btn_Tienhanhthanhtoan.click()
 
     # Page thông tin thanh toán
-    # Add coupon code
-    coupon = page.locator("//div[@class='ml-[8px] text-on-surface-dark-high-emphasis sm:text-body-large' and contains(text(),'Chọn hoặc nhập mã ưu đãi')]")
-    await coupon.highlight()
-    await coupon.click()
-    xpath = f"//div[@class='pr-[8px] text-body-medium font-semibold' and contains(text(),'{coupon_detail_name}')]"
-    coupon_detail = page.locator(xpath)
-    await coupon_detail.highlight()
-    await coupon_detail.click()
-    btn_Sudung = page.get_by_role("button", name="Sử dụng")
-    await btn_Sudung.highlight()
-    await btn_Sudung.click()
 
     # Chọn thanh toán thẻ nội địa
     payment_thenoidia = page.get_by_title("Thẻ Nội Địa")
     await payment_thenoidia.highlight()
     await payment_thenoidia.click()
     # Click Xác nhận
-    btn_Xacnhan = page.get_by_role("button", name="Xác nhận")
+    btn_Xacnhan = page.get_by_role("button", name="Thanh toán")
     await btn_Xacnhan.highlight()
     await btn_Xacnhan.click()
 
