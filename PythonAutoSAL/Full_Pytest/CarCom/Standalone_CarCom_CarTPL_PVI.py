@@ -21,7 +21,7 @@ def set_up_page(page: Page):
 def test_CarCom_CarTPL_PVI(set_up_page: Page):
     product_detail = "Bảo hiểm vật chất ô tô"
     insurer_detail = "Bảo Hiểm Hàng Không"
-    phone_number = "0901123090"
+    phone_number = "0901123091"
     user_password = "112233"
 
     # Sign in
@@ -46,8 +46,10 @@ def test_CarCom_CarTPL_PVI(set_up_page: Page):
     flow_mua = set_up_page.get_by_text("Mua online")
     flow_mua.click()
 
-    # order_draft = set_up_page.get_by_role("button", name="Không, tạo đơn mới")
-    # order_draft.click()
+    popup_draft_order = set_up_page.locator("//div[@class='text-nds-para-medium font-medium']")
+    if (popup_draft_order.is_visible()):
+        order_draft = set_up_page.get_by_role("button", name="Không, tạo đơn mới")
+        order_draft.click()
 
 
      # Click btn Tiếp tục
