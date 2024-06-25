@@ -74,5 +74,6 @@ def test_CarTPL_KKD_CN_K_promo(set_up_page: Page, ):
     #price_TNDS = set_up_page.locator("//div[@class='text-nds-para-medium font-semibold' and contains(text(), '₫')]")
     price_TNDS = set_up_page.locator("//*[@id='__next']/main/div/div/form/section/div[2]/div[1]/aside/div[2]/div[2]")
     actual_result_value = price_TNDS.text_content()
-    actual_result = f"{actual_result_value}"
+    normalized_actual = unicodedata.normalize('NFKD', actual_result_value).encode('ASCII', 'ignore').decode()
+    actual_result = f"{normalized_actual}"
     assert expected_result in actual_result
