@@ -16,9 +16,9 @@ def set_up_page(page: Page):
     page.close()
 
 # Insurer PVI KKD CN
-def test_CarTPL_PVI_KKD_CN_K_promo(set_up_page: Page, ):
+def test_CarTPL_MIC_KKD_CN_K_promo(set_up_page: Page, ):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "PVI"
+    insurer_detail = "MIC"
     kdvt_value = "Có"
     numberseat = "5"
     coupon_detail_name = "Nghia Campaign Car"
@@ -110,12 +110,12 @@ def test_CarTPL_PVI_KKD_CN_K_promo(set_up_page: Page, ):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -196,9 +196,9 @@ def test_CarTPL_PVI_KKD_CN_K_promo(set_up_page: Page, ):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer Bảo Minh KKD CN Tập lái
-def test_CarTPL_BaoMinh_KKD_CN_TL_promo(set_up_page: Page):
+def test_CarTPL_MIC_KKD_CN_TL_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "Bảo Minh"
+    insurer_detail = "MIC"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -290,12 +290,12 @@ def test_CarTPL_BaoMinh_KKD_CN_TL_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -369,9 +369,9 @@ def test_CarTPL_BaoMinh_KKD_CN_TL_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer Bảo Việt KKD Pickup-Minivan Không
-def test_CarTPL_BaoViet_KKD_PickupMinivan_K_promo(set_up_page: Page):
+def test_CarTPL_MIC_KKD_PickupMinivan_K_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "Bảo Việt"
+    insurer_detail = "MIC"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -463,12 +463,12 @@ def test_CarTPL_BaoViet_KKD_PickupMinivan_K_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -542,9 +542,9 @@ def test_CarTPL_BaoViet_KKD_PickupMinivan_K_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer BSH KKD Pickup-Minivan Tập lái
-def test_CarTPL_BSH_KKD_PickupMinivan_TL_promo(set_up_page: Page):
+def test_CarTPL_MIC_KKD_PickupMinivan_TL_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "BSH"
+    insurer_detail = "MIC"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -636,12 +636,12 @@ def test_CarTPL_BSH_KKD_PickupMinivan_TL_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -715,9 +715,9 @@ def test_CarTPL_BSH_KKD_PickupMinivan_TL_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer VNI KKD Chở hàng Không
-def test_CarTPL_VNI_KKD_Chohang_K_promo(set_up_page: Page):
+def test_CarTPL_MIC_KKD_Chohang_K_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "VNI"
+    insurer_detail = "MIC"
     numberseat = "2"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -815,12 +815,12 @@ def test_CarTPL_VNI_KKD_Chohang_K_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if(field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -995,12 +995,12 @@ def test_CarTPL_VNI_KKD_Chohang_TL_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -1175,7 +1175,7 @@ def test_CarTPL_Liberty_KKD_Chohang_Daukeo_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
@@ -1436,7 +1436,7 @@ def test_CarTPL_MIC_KKD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
 # Insurer MIC KKD Chở hàng Đầu kéo rơ-móc
 def test_CarTPL_MIC_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "Liberty"
+    insurer_detail = "MIC"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -1534,12 +1534,12 @@ def test_CarTPL_MIC_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -1613,9 +1613,9 @@ def test_CarTPL_MIC_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer AAA KKD Chở hàng Đầu kéo rơ-móc
-def test_CarTPL_AAA_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
+def test_CarTPL_MIC_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "AAA"
+    insurer_detail = "MIC"
     numberseat = "2"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -1713,12 +1713,12 @@ def test_CarTPL_AAA_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()

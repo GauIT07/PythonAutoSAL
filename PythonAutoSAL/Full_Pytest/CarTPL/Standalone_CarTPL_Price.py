@@ -1,6 +1,5 @@
 from playwright.sync_api import Page, sync_playwright, Locator, expect
-import pytest
-import logging
+import pytest, logging, re
 
 logger = logging.getLogger('___Test___')
 logger.setLevel(logging.INFO)
@@ -24,7 +23,7 @@ def test_CarTPL_KKD_CN_K_promo(set_up_page: Page, ):
     namSanXuat = "2023"
     mucDichSuDung = "Chở người"
     loaiVanChuyenDacBiet = "Không"
-    expected_result :str = "480.700"
+    expected_result :str = "480.700 ₫"
 
     # Homepage Saladin
     logger.info(msg="Choose product cats")
@@ -46,34 +45,30 @@ def test_CarTPL_KKD_CN_K_promo(set_up_page: Page, ):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.wait_for_selector(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Click btn Tiếp tục
     btn_Tieptuc = set_up_page.get_by_text("Tiếp tục")
     btn_Tieptuc.click()
 
     # Page Thời hạn bảo hiểm
-
-    #price_TNDS = set_up_page.locator("//div[@class='text-nds-para-medium font-semibold' and contains(text(), '₫')]")
-    price_TNDS = set_up_page.locator("//*[@id='__next']/main/div/div/form/section/div[2]/div[1]/aside/div[2]/div[2]")
-    actual_result_value = price_TNDS.text_content()
-    normalized_actual = unicodedata.normalize('NFKD', actual_result_value).encode('ASCII', 'ignore').decode()
-    actual_result = f"{normalized_actual}"
-    assert expected_result in actual_result
+    price_TNDS = set_up_page.locator("//*[@class='text-nds-para-medium font-semibold']").nth(1)
+    expect(price_TNDS).to_contain_text(expected_result)

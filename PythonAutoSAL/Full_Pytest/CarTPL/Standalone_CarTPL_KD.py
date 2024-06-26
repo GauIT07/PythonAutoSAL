@@ -25,6 +25,8 @@ def test_CarTPL_PVI_KD_CN_K_promo(set_up_page: Page, ):
     namSanXuat = "2023"
     mucDichSuDung = "Chở người"
     loaiVanChuyenDacBiet = "Không"
+    hangxe = "HYUNDAI"
+    dongxe = "Accent 1.5 AT"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " + kdvt_value + "KD" + " " + mucDichSuDung + " " + loaiVanChuyenDacBiet
 
     # Homepage Saladin
@@ -47,21 +49,21 @@ def test_CarTPL_PVI_KD_CN_K_promo(set_up_page: Page, ):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.wait_for_selector(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
@@ -98,12 +100,12 @@ def test_CarTPL_PVI_KD_CN_K_promo(set_up_page: Page, ):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -186,6 +188,8 @@ def test_CarTPL_BaoMinh_KD_CN_TL_promo(set_up_page: Page):
     namSanXuat = "2023"
     mucDichSuDung = "Chở người"
     loaiVanChuyenDacBiet = "Xe Taxi"
+    hangxe = "HYUNDAI"
+    dongxe = "Accent 1.5 AT"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " +kdvt_value+"KD" + " " + mucDichSuDung + " " + loaiVanChuyenDacBiet
 
     # Homepage Saladin
@@ -208,25 +212,26 @@ def test_CarTPL_BaoMinh_KD_CN_TL_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Click btn Tiếp tục
     btn_Tieptuc = set_up_page.get_by_text("Tiếp tục")
     btn_Tieptuc.click()
@@ -259,12 +264,12 @@ def test_CarTPL_BaoMinh_KD_CN_TL_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -347,6 +352,8 @@ def test_CarTPL_BaoViet_KD_PickupMinivan_K_promo(set_up_page: Page):
     namSanXuat = "2023"
     mucDichSuDung = "Pickup - Minivan"
     loaiVanChuyenDacBiet = "Không"
+    hangxe= "TOYOTA"
+    dongxe= "4 Runner SR5"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " + kdvt_value+"KD" + " " + mucDichSuDung + " " + loaiVanChuyenDacBiet
 
     # Homepage Saladin
@@ -369,25 +376,26 @@ def test_CarTPL_BaoViet_KD_PickupMinivan_K_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Click btn Tiếp tục
     btn_Tieptuc = set_up_page.get_by_text("Tiếp tục")
     btn_Tieptuc.click()
@@ -410,6 +418,18 @@ def test_CarTPL_BaoViet_KD_PickupMinivan_K_promo(set_up_page: Page):
     textbox_address = set_up_page.locator("//input[@name='buyer_address']")
     textbox_address.fill("111 LCT Q3")
 
+    field_HangXe = set_up_page.get_by_text("Hãng xe")
+    field_DongXe = set_up_page.get_by_text("Dòng xe")
+    if (field_HangXe.is_visible() and field_DongXe.is_visible()):
+        textbox_HangXe = set_up_page.locator("label").filter(has_text="Hãng xe").locator("label")
+        textbox_HangXe.click()
+        textbox_HangXe_value = set_up_page.get_by_role("option", name=hangxe)
+        textbox_HangXe_value.click()
+        textbox_DongXe = set_up_page.locator("label").filter(has_text="Dòng xe").locator("label")
+        textbox_DongXe.click()
+        textbox_DongXe_value = set_up_page.get_by_role("option", name=dongxe)
+        textbox_DongXe_value.click()
+
     textbox_idnumber = set_up_page.locator("//input[@name='buyer_nid']")
     textbox_idnumber.fill("111222333")
 
@@ -417,12 +437,12 @@ def test_CarTPL_BaoViet_KD_PickupMinivan_K_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -505,6 +525,8 @@ def test_CarTPL_BSH_KD_PickupMinivan_TL_promo(set_up_page: Page):
     namSanXuat = "2023"
     mucDichSuDung = "Pickup - Minivan"
     loaiVanChuyenDacBiet = "Xe buýt"
+    hangxe= "TOYOTA"
+    dongxe= "Alphard 2.4 AT"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " + kdvt_value+"KD" + " " + mucDichSuDung + " " + loaiVanChuyenDacBiet
 
     # Homepage Saladin
@@ -527,25 +549,26 @@ def test_CarTPL_BSH_KD_PickupMinivan_TL_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.wait_for_selector(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Click btn Tiếp tục
     btn_Tieptuc = set_up_page.get_by_text("Tiếp tục")
     btn_Tieptuc.click()
@@ -576,16 +599,28 @@ def test_CarTPL_BSH_KD_PickupMinivan_TL_promo(set_up_page: Page):
     textbox_idnumber = set_up_page.locator("//input[@name='buyer_nid']")
     textbox_idnumber.fill("111222333")
 
+    field_HangXe = set_up_page.get_by_text("Hãng xe")
+    field_DongXe = set_up_page.get_by_text("Dòng xe")
+    if (field_HangXe.is_visible() and field_DongXe.is_visible()):
+        textbox_HangXe = set_up_page.locator("label").filter(has_text="Hãng xe").locator("label")
+        textbox_HangXe.click()
+        textbox_HangXe_value = set_up_page.get_by_role("option", name=hangxe)
+        textbox_HangXe_value.click()
+        textbox_DongXe = set_up_page.locator("label").filter(has_text="Dòng xe").locator("label")
+        textbox_DongXe.click()
+        textbox_DongXe_value = set_up_page.get_by_role("option", name=dongxe)
+        textbox_DongXe_value.click()
+
     textbox_platenumber = set_up_page.locator("//input[@name='plate']")
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -674,6 +709,8 @@ def test_CarTPL_VNI_KD_Chohang_K_promo(set_up_page: Page):
     namSanXuat = "2023"
     mucDichSuDung = "Chở hàng"
     loaiVanChuyenDacBiet = "Không"
+    hangxe= "MITSUBISHI"
+    dongxe= "Grandis 2.4 AT"
     numberload = "20"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " + kdvt_value+"KD" + " " + mucDichSuDung + " " + loaiVanChuyenDacBiet
 
@@ -697,25 +734,26 @@ def test_CarTPL_VNI_KD_Chohang_K_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Nhap trong tai
     field_trongTai = set_up_page.locator("//div[@class='flex-1 text-nds-para-large font-semibold' and contains(text(),'Trọng tải')]")
     if(field_trongTai.is_visible()):
@@ -746,16 +784,28 @@ def test_CarTPL_VNI_KD_Chohang_K_promo(set_up_page: Page):
     textbox_idnumber = set_up_page.locator("//input[@name='buyer_nid']")
     textbox_idnumber.fill("111222333")
 
+    field_HangXe = set_up_page.get_by_text("Hãng xe")
+    field_DongXe = set_up_page.get_by_text("Dòng xe")
+    if (field_HangXe.is_visible() and field_DongXe.is_visible()):
+        textbox_HangXe = set_up_page.locator("label").filter(has_text="Hãng xe").locator("label")
+        textbox_HangXe.click()
+        textbox_HangXe_value = set_up_page.get_by_role("option", name=hangxe)
+        textbox_HangXe_value.click()
+        textbox_DongXe = set_up_page.locator("label").filter(has_text="Dòng xe").locator("label")
+        textbox_DongXe.click()
+        textbox_DongXe_value = set_up_page.get_by_role("option", name=dongxe)
+        textbox_DongXe_value.click()
+
     textbox_platenumber = set_up_page.locator("//input[@name='plate']")
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if(field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -845,6 +895,8 @@ def test_CarTPL_Liberty_KD_Chohang_Daukeo_promo(set_up_page: Page):
     namSanXuat = "2023"
     mucDichSuDung = "Chở hàng"
     loaiVanChuyenDacBiet = "Đầu kéo rơ-moóc"
+    hangxe = "HYUNDAI"
+    dongxe = "Accent 1.5 AT"
     numberload = "20"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " + kdvt_value+"KD" + " "+ mucDichSuDung + " " + loaiVanChuyenDacBiet
 
@@ -868,25 +920,26 @@ def test_CarTPL_Liberty_KD_Chohang_Daukeo_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Nhap trong tai
     field_trongTai = set_up_page.locator(
         "//div[@class='flex-1 text-nds-para-large font-semibold' and contains(text(),'Trọng tải')]")
@@ -918,16 +971,28 @@ def test_CarTPL_Liberty_KD_Chohang_Daukeo_promo(set_up_page: Page):
     textbox_idnumber = set_up_page.locator("//input[@name='buyer_nid']")
     textbox_idnumber.fill("111222333")
 
+    field_HangXe = set_up_page.get_by_text("Hãng xe")
+    field_DongXe = set_up_page.get_by_text("Dòng xe")
+    if (field_HangXe.is_visible() and field_DongXe.is_visible()):
+        textbox_HangXe = set_up_page.locator("label").filter(has_text="Hãng xe").locator("label")
+        textbox_HangXe.click()
+        textbox_HangXe_value = set_up_page.get_by_role("option", name=hangxe)
+        textbox_HangXe_value.click()
+        textbox_DongXe = set_up_page.locator("label").filter(has_text="Dòng xe").locator("label")
+        textbox_DongXe.click()
+        textbox_DongXe_value = set_up_page.get_by_role("option", name=dongxe)
+        textbox_DongXe_value.click()
+
     textbox_platenumber = set_up_page.locator("//input[@name='plate']")
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -1017,6 +1082,8 @@ def test_CarTPL_MIC_KD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
     namSanXuat = "2023"
     mucDichSuDung = "Xe chuyên dụng"
     loaiVanChuyenDacBiet = "Xe cứu thương"
+    hangxe = "HYUNDAI"
+    dongxe = "Accent 1.5 AT"
     numberload = "20"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " + kdvt_value+"KD" + " " + mucDichSuDung + " " + loaiVanChuyenDacBiet
 
@@ -1040,25 +1107,26 @@ def test_CarTPL_MIC_KD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Nhap trong tai
     field_trongTai = set_up_page.locator(
         "//div[@class='flex-1 text-nds-para-large font-semibold' and contains(text(),'Trọng tải')]")
@@ -1094,16 +1162,28 @@ def test_CarTPL_MIC_KD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
     textbox_idnumber = set_up_page.locator("//input[@name='buyer_nid']")
     textbox_idnumber.fill("111222333")
 
+    field_HangXe = set_up_page.get_by_text("Hãng xe")
+    field_DongXe = set_up_page.get_by_text("Dòng xe")
+    if (field_HangXe.is_visible() and field_DongXe.is_visible()):
+        textbox_HangXe = set_up_page.locator("label").filter(has_text="Hãng xe").locator("label")
+        textbox_HangXe.click()
+        textbox_HangXe_value = set_up_page.get_by_role("option", name=hangxe)
+        textbox_HangXe_value.click()
+        textbox_DongXe = set_up_page.locator("label").filter(has_text="Dòng xe").locator("label")
+        textbox_DongXe.click()
+        textbox_DongXe_value = set_up_page.get_by_role("option", name=dongxe)
+        textbox_DongXe_value.click()
+
     textbox_platenumber = set_up_page.locator("//input[@name='plate']")
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
@@ -1187,6 +1267,8 @@ def test_CarTPL_AAA_KD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     namSanXuat = "2023"
     mucDichSuDung = "Xe chuyên dụng"
     loaiVanChuyenDacBiet = "Xe chở tiền"
+    hangxe = "HYUNDAI"
+    dongxe = "Accent 1.5 AT"
     numberload = "2"
     fullname = "Dat don CarTPL" + " " + insurer_detail + " " + kdvt_value+"KD" + " " + mucDichSuDung + " " + loaiVanChuyenDacBiet
 
@@ -1210,25 +1292,26 @@ def test_CarTPL_AAA_KD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Nhap trong tai
     field_trongTai = set_up_page.locator(
         "//div[@class='flex-1 text-nds-para-large font-semibold' and contains(text(),'Trọng tải')]")
@@ -1260,16 +1343,28 @@ def test_CarTPL_AAA_KD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     textbox_idnumber = set_up_page.locator("//input[@name='buyer_nid']")
     textbox_idnumber.fill("111222333")
 
+    field_HangXe = set_up_page.get_by_text("Hãng xe")
+    field_DongXe = set_up_page.get_by_text("Dòng xe")
+    if (field_HangXe.is_visible() and field_DongXe.is_visible()):
+        textbox_HangXe = set_up_page.locator("label").filter(has_text="Hãng xe").locator("label")
+        textbox_HangXe.click()
+        textbox_HangXe_value = set_up_page.get_by_role("option", name=hangxe)
+        textbox_HangXe_value.click()
+        textbox_DongXe = set_up_page.locator("label").filter(has_text="Dòng xe").locator("label")
+        textbox_DongXe.click()
+        textbox_DongXe_value = set_up_page.get_by_role("option", name=dongxe)
+        textbox_DongXe_value.click()
+
     textbox_platenumber = set_up_page.locator("//input[@name='plate']")
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()

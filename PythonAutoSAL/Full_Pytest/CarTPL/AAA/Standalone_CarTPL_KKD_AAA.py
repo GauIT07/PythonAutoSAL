@@ -16,9 +16,9 @@ def set_up_page(page: Page):
     page.close()
 
 # Insurer PVI KKD CN
-def test_CarTPL_PVI_KKD_CN_K_promo(set_up_page: Page, ):
+def test_CarTPL_AAA_KKD_CN_K_promo(set_up_page: Page, ):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "PVI"
+    insurer_detail = "AAA"
     kdvt_value = "Có"
     numberseat = "5"
     coupon_detail_name = "Nghia Campaign Car"
@@ -190,15 +190,15 @@ def test_CarTPL_PVI_KKD_CN_K_promo(set_up_page: Page, ):
         "//div[@class='select-none rounded-[32px] border px-[8px] py-[2px] text-body-small ']")
     policy_status.wait_for(state="visible", timeout=50000)
     actual_result = policy_status.text_content()
-    expected_result: str = 'Đang xử lý'
+    expected_result: str = 'Thành công'
     assert actual_result == expected_result
 
     logger.info(msg="Order id: " + order_id)
 
 # Insurer Bảo Minh KKD CN Tập lái
-def test_CarTPL_BaoMinh_KKD_CN_TL_promo(set_up_page: Page):
+def test_CarTPL_AAA_KKD_CN_TL_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "Bảo Minh"
+    insurer_detail = "AAA"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -369,9 +369,9 @@ def test_CarTPL_BaoMinh_KKD_CN_TL_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer Bảo Việt KKD Pickup-Minivan Không
-def test_CarTPL_BaoViet_KKD_PickupMinivan_K_promo(set_up_page: Page):
+def test_CarTPL_AAA_KKD_PickupMinivan_K_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "Bảo Việt"
+    insurer_detail = "AAA"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -542,9 +542,9 @@ def test_CarTPL_BaoViet_KKD_PickupMinivan_K_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer BSH KKD Pickup-Minivan Tập lái
-def test_CarTPL_BSH_KKD_PickupMinivan_TL_promo(set_up_page: Page):
+def test_CarTPL_AAA_KKD_PickupMinivan_TL_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "BSH"
+    insurer_detail = "AAA"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -715,9 +715,9 @@ def test_CarTPL_BSH_KKD_PickupMinivan_TL_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer VNI KKD Chở hàng Không
-def test_CarTPL_VNI_KKD_Chohang_K_promo(set_up_page: Page):
+def test_CarTPL_AAA_KKD_Chohang_K_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "VNI"
+    insurer_detail = "AAA"
     numberseat = "2"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -1254,9 +1254,9 @@ def test_CarTPL_Liberty_KKD_Chohang_Daukeo_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer MIC KKD Chở hàng Đầu kéo rơ-móc
-def test_CarTPL_MIC_KKD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
+def test_CarTPL_AAA_KKD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "MIC"
+    insurer_detail = "AAA"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -1434,9 +1434,9 @@ def test_CarTPL_MIC_KKD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
     logger.info(msg="Order id: " + order_id)
 
 # Insurer MIC KKD Chở hàng Đầu kéo rơ-móc
-def test_CarTPL_MIC_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
+def test_CarTPL_AAA_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     product_detail = "Bảo hiểm ô tô"
-    insurer_detail = "Liberty"
+    insurer_detail = "AAA"
     numberseat = "5"
     kdvt_value = "Không"
     coupon_detail_name = "Nghia Campaign Car"
@@ -1647,25 +1647,26 @@ def test_CarTPL_AAA_KKD_Xechuyendung_Xechotien_promo(set_up_page: Page):
     # Chon Nam san xuat
     textbox_namSanXuat = set_up_page.locator("//input[@id=':r5:']")
     textbox_namSanXuat.click()
-    xpath_namSanXuat = f"//div[@class='text-nds-para-medium' and contains(text(),'{namSanXuat}')]"
-    textbox_namSanXuat_value = set_up_page.locator(xpath_namSanXuat)
+    textbox_namSanXuat_value = set_up_page.get_by_role("option", name=namSanXuat)
     textbox_namSanXuat_value.click()
+
     # Chon Muc dich su dung
     textbox_mucDichSuDung = set_up_page.locator("//input[@id=':ra:']")
     textbox_mucDichSuDung.click()
-    xpath_mucDichSuDung = f"//div[@class='text-nds-para-medium' and contains(text(), '{mucDichSuDung}')]"
-    textbox_mucDichSuDung_value = set_up_page.locator(xpath_mucDichSuDung)
+    textbox_mucDichSuDung_value = set_up_page.get_by_role("option", name=mucDichSuDung)
     textbox_mucDichSuDung_value.click()
+
     # Chon Loai van chuyen dac biet
     textbox_loaiVanChuyenDacBiet = set_up_page.locator("//input[@id=':rf:']")
     textbox_loaiVanChuyenDacBiet.click()
-    xpath_loaiVanChuyenDacBiet = f"//div[@class='text-nds-para-medium' and contains(text(), '{loaiVanChuyenDacBiet}')]"
-    textbox_loaiVanChuyenDacBiet_value = set_up_page.locator(xpath_loaiVanChuyenDacBiet)
+    textbox_loaiVanChuyenDacBiet_value = set_up_page.get_by_role("option", name=loaiVanChuyenDacBiet)
     textbox_loaiVanChuyenDacBiet_value.click()
+
     # Nhap so cho ngoi
     textbox_amountseat = set_up_page.locator("//input[@id=':rh:']")
     textbox_amountseat.clear()
     textbox_amountseat.fill(numberseat)
+
     # Nhap trong tai
     field_trongTai = set_up_page.locator(
         "//div[@class='flex-1 text-nds-para-large font-semibold' and contains(text(),'Trọng tải')]")
