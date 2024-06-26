@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, sync_playwright, Locator, expect
 import pytest
 import logging
+import unicodedata
 
 logger = logging.getLogger('___Test___')
 logger.setLevel(logging.INFO)
@@ -72,8 +73,6 @@ def test_CarTPL_KKD_CN_K_promo(set_up_page: Page, ):
     # Page Thời hạn bảo hiểm
 
     #price_TNDS = set_up_page.locator("//div[@class='text-nds-para-medium font-semibold' and contains(text(), '₫')]")
-    price_TNDS = set_up_page.locator("//*[@id='__next']/main/div/div/form/section/div[2]/div[1]/aside/div[2]/div[2]")
-    actual_result_value = price_TNDS.text_content()
-    normalized_actual = unicodedata.normalize('NFKD', actual_result_value).encode('ASCII', 'ignore').decode()
-    actual_result = f"{normalized_actual}"
+    price_TNDS = set_up_page.wait_for_selector("//*[@id='__next']/main/div/div/form/section/div[2]/div[1]/aside/div[2]/div[2]")
+    actual_result :str = price_TNDS.text_content()
     assert expected_result in actual_result

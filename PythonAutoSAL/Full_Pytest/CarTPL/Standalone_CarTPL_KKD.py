@@ -1235,12 +1235,12 @@ def test_CarTPL_MIC_KKD_Xechuyendung_Xecuuthuong_promo(set_up_page: Page):
     textbox_platenumber.fill("51L12222")
 
     textbox_chassis = set_up_page.locator("//input[@name='chassis']")
-    textbox_chassis.fill("SOKHUNG")
+    textbox_chassis.fill("SOKHUNG123")
 
     field_engine = set_up_page.locator("//div[@class='text-nds-para-medium font-medium' and contains(text(),'Số máy')]")
     if (field_engine.is_visible()):
         textbox_engine = set_up_page.locator("//input[@name='engine']")
-        textbox_engine.fill("SOMAY")
+        textbox_engine.fill("SOMAY123")
 
     # icon_meow = page.get_by_title("Meow meow")
     # await icon_meow.highlight()
